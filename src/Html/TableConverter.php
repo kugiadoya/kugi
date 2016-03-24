@@ -2,7 +2,7 @@
 /*
  * This file is part of Kugi package.
  */
-namespace Kugi\Html
+namespace Kugi\Html;
 
 /**
  * Utility class for convert table from array or object.
