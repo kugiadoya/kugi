@@ -7,7 +7,7 @@ namespace Kugi\Html
 /**
  * Utility class for convert table from array or object.
  */
-class Kugi_Util_TableConverter
+class TableConverter
 {
     /**
      * TableConverter Options
