@@ -1,0 +1,24 @@
+{
+    "name": "kugiadoya/kugi",
+    "description": null,
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Yu Odagaki",
+            "email": "yuuodagaki@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {},
+    "keywords": [],
+    "require": {
+    	"php": ">=5.3.27"
+    },
+    "autoload": {
+    	"psr-4": {
+    		"Kugi\\": "src"
+    	}
+    },
+    "include-path": ["src/"]
+}
