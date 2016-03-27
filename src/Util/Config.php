@@ -22,9 +22,11 @@ class Config
      */
     public static function set( $path )
     {
-        if( $config = parse_ini_file( $path, false ) ){
-            foreach( $config as $key => $value ){
-                define( strtoupper( $key ), $value );
+        if ($config = parse_ini_file($path, false)){
+            foreach ($config as $key => $value){
+                if (!defined(strtoupper($key)) {
+                    define( strtoupper( $key ), $value );
+                }
             }
         }else{
             return;
@@ -38,9 +40,9 @@ class Config
      * @param  string  $default used if config key not exits
      * @return string           value
      */
-    public static function is ( $key, $default = null )
+    public static function is($key, $default = null)
     {
-        if ( defined( $key ) === true ) {
+        if (defined( $key ) === true) {
             return constant( $key );
         }
         return $default;

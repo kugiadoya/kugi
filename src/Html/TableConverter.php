@@ -27,7 +27,7 @@ class TableConverter
      * @param  array $options
      * @return array
      */
-    private static function init ( $options = array() ) {
+    private static function init($options = array()) {
         if ( empty( $options ) ) {
             return array();
         }
@@ -48,7 +48,7 @@ class TableConverter
      * @param  array $options
      * @return string
      */
-    public static function convert ( $target = null, $headers = array(), $options = array() )
+    public static function convert ($target = null, $headers = array(), $options = array())
     {
         $options = self::init( $options );
 
@@ -73,7 +73,7 @@ class TableConverter
      * @param  array $options
      * @return string
      */
-    private static function convertFromArray ( array $target, array $headers, array $options )
+    private static function convertFromArray (array $target, array $headers, array $options )
     {
         // table
         $table = self::getTagWithClass( $options, 'table' );
