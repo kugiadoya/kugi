@@ -20,7 +20,7 @@ class Config
      *
      * @param string $path
      */
-    public static function set( $path )
+    public static function set($path)
     {
         if ($config = parse_ini_file($path, false)){
             foreach ($config as $key => $value){

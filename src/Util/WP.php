@@ -23,7 +23,7 @@ class WP
      * @param  array $options
      * @return string            生成した文字列(<link> and <script>)
      */
-    public static function returnJsCssSources( $root, $fileNames, $options = null )
+    public static function returnJsCssSources($root, $fileNames, $options = null)
     {
         $result = "";
 
