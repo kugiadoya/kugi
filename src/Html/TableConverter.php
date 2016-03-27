@@ -29,7 +29,7 @@ class TableConverter
      */
     private function init ( $options = array() ) {
         if ( empty( $options ) ) {
-            return;
+            return array();
         }
 
         foreach ( self::$options_list as $key => $value ) {
@@ -57,7 +57,7 @@ class TableConverter
         }
 
         if ( empty( $headers ) || !is_array( $headers ) ) {
-            $headers = null;
+            $headers = array();
         }
 
         if ( is_array( $target ) ) {
@@ -73,7 +73,7 @@ class TableConverter
      * @param  array $options
      * @return string
      */
-    private function convertFromArray ( array $target, $headers, $options )
+    private function convertFromArray ( array $target, array $headers, array $options )
     {
         // table
         $table = self::getTagWithClass( $options, 'table' );
@@ -102,7 +102,7 @@ class TableConverter
      * @param  array  $options
      * @return string
      */
-    private function createTd ( $key, $col, $options )
+    private function createTd ( $key, $col, array $options )
     {
         if ( !empty( $options['refine'] ) && is_array( $options['refine'] ) ) {
             $refineFlg = false;
@@ -122,7 +122,7 @@ class TableConverter
      * @param  array $options
      * @return string
      */
-    private function convertHeaders ( $first, &$headers, $options )
+    private function convertHeaders ( $first, &$headers, array $options )
     {
         //
         if ( !is_array( $headers ) || empty( $headers ) ) {

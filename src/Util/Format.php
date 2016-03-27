@@ -18,13 +18,13 @@ class Format
     /**
      * change to wareki year.[平成・昭和・大正]
      *
-     * @param string $date before change year
+     * @param string $year before change year
      * @return string wareki year
      */
     public static function way ( $year, $format = '%s%d年' )
     {
         if ( strlen($year) !== 4 || empty($year) ) return $year;
-        $g = '';
+
         if ($year >= 1989) {
             $g = "平成";
             $year = $year - 1988;
@@ -50,7 +50,6 @@ class Format
      */
     public static function pf ( $price, $mark = '&yen;' )
     {
-        $sp = '';
         if (is_float($price)) {
             $sp = sprintf('%f', $price);
             $sp = preg_replace("/\.?0+$/", "", $sp);

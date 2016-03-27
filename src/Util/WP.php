@@ -48,13 +48,13 @@ class WP
             foreach($fileNames as $file)
             {
                 if(preg_match("/css$/", $file)){
-                    $href = $root. '/css/' . $file;
-                    $result .= '<link href="' . $href . '" rel="' . $css_rel . '" type="' . $css_type . '" media="screen" />' . PHP_EOL;
+                    $href = $root. $css_directory. $file;
+                    $result .= '<link href="'. $href. '" rel="'. $css_rel. '" type="'. $css_type. '" media="screen" />'. PHP_EOL;
                 }
 
                 if(preg_match("/js$/", $file)){
-                    $src = $root. '/js/' . $file;
-                    $result .= '<script src="' . $src . '" type="' . $js_type . '" />' . PHP_EOL;
+                    $src = $root. $js_directory. $file;
+                    $result .= '<script src="'. $src. '" type="'. $js_type. '" />'. PHP_EOL;
                 }
 
             }

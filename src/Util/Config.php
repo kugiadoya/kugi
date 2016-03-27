@@ -18,7 +18,7 @@ class Config
     /**
      * set const from config file.
      *
-     * @param string $filepass
+     * @param string $path
      */
     public static function set( $path )
     {
