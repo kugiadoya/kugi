@@ -27,7 +27,7 @@ class TableConverter
      * @param  array $options
      * @return array
      */
-    private function init ( $options = array() ) {
+    private static function init ( $options = array() ) {
         if ( empty( $options ) ) {
             return array();
         }
@@ -73,7 +73,7 @@ class TableConverter
      * @param  array $options
      * @return string
      */
-    private function convertFromArray ( array $target, array $headers, array $options )
+    private static function convertFromArray ( array $target, array $headers, array $options )
     {
         // table
         $table = self::getTagWithClass( $options, 'table' );
@@ -102,7 +102,7 @@ class TableConverter
      * @param  array  $options
      * @return string
      */
-    private function createTd ( $key, $col, array $options )
+    private static function createTd ( $key, $col, array $options )
     {
         if ( !empty( $options['refine'] ) && is_array( $options['refine'] ) ) {
             $refineFlg = false;
@@ -122,7 +122,7 @@ class TableConverter
      * @param  array $options
      * @return string
      */
-    private function convertHeaders ( $first, &$headers, array $options )
+    private static function convertHeaders ( $first, &$headers, array $options )
     {
         //
         if ( !is_array( $headers ) || empty( $headers ) ) {
@@ -169,7 +169,7 @@ class TableConverter
      * @param  string $tag
      * @return string
      */
-    private function getTagWithClass ( $options, $tag )
+    private static function getTagWithClass ( $options, $tag )
     {
         $class = empty( $options[$tag. 'Class'] ) ? '' : ' class="'. $options[$tag. 'Class']. '"';
         return "<{$tag}{$class}>";
