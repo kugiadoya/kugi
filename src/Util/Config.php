@@ -24,7 +24,7 @@ class Config
     {
         if ($config = parse_ini_file($path, false)){
             foreach ($config as $key => $value){
-                if (!defined(strtoupper($key)) {
+                if (!defined(strtoupper($key))) {
                     define( strtoupper( $key ), $value );
                 }
             }
