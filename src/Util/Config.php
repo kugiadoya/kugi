@@ -11,7 +11,8 @@ namespace Kugi\Util;
  */
 class Config
 {
-    private function __construct(){
+    private function __construct()
+    {
 
     }
 
@@ -22,13 +23,13 @@ class Config
      */
     public static function set($path)
     {
-        if ($config = parse_ini_file($path, false)){
-            foreach ($config as $key => $value){
+        if ($config = parse_ini_file($path, false)) {
+            foreach ($config as $key => $value) {
                 if (!defined(strtoupper($key))) {
                     define( strtoupper( $key ), $value );
                 }
             }
-        }else{
+        } else {
             return;
         }
     }
