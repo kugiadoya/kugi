@@ -11,7 +11,8 @@ namespace Kugi\Util;
  */
 class WP
 {
-    private function __construct(){
+    private function __construct()
+    {
 
     }
 
@@ -43,7 +44,7 @@ class WP
             }
         }
 
-        if(is_array($fileNames)) {
+        if (is_array($fileNames)) {
             foreach ($fileNames as $file) {
                 if (preg_match("/css$/", $file)) {
                     $href = $root. $css_directory. $file;
