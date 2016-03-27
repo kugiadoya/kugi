@@ -28,12 +28,12 @@ class TableConverter
      * @return array
      */
     private static function init($options = array()) {
-        if ( empty( $options ) ) {
+        if (empty($options)) {
             return array();
         }
 
-        foreach ( self::$options_list as $key => $value ) {
-            if ( isset( $options[$key] ) && !empty( $options[$key] ) ) continue;
+        foreach (self::$options_list as $key => $value) {
+            if (isset($options[$key]) && !empty($options[$key])) continue;
             $options[$key] = $value;
         }
 
@@ -48,20 +48,20 @@ class TableConverter
      * @param  array $options
      * @return string
      */
-    public static function convert ($target = null, $headers = array(), $options = array())
+    public static function convert($target = null, $headers = array(), $options = array())
     {
-        $options = self::init( $options );
+        $options = self::init($options);
 
-        if ( empty( $target ) ) {
+        if (empty($target)) {
             return null;
         }
 
-        if ( empty( $headers ) || !is_array( $headers ) ) {
+        if (empty($headers) || !is_array($headers)) {
             $headers = array();
         }
 
-        if ( is_array( $target ) ) {
-            return self::convertFromArray( $target, $headers, $options );
+        if (is_array($target)) {
+            return self::convertFromArray($target, $headers, $options);
         }
     }
 
@@ -73,17 +73,17 @@ class TableConverter
      * @param  array $options
      * @return string
      */
-    private static function convertFromArray (array $target, array $headers, array $options )
+    private static function convertFromArray(array $target, array $headers, array $options)
     {
         // table
-        $table = self::getTagWithClass( $options, 'table' );
+        $table = self::getTagWithClass($options, 'table');
         // thead
-        $table .= self::convertHeaders( $target[0], $headers, $options );
+        $table .= self::convertHeaders($target[0], $headers, $options);
         // tbody
-        $table .= self::getTagWithClass( $options, 'tbody' );
-        foreach ( $target as $row ) {
+        $table .= self::getTagWithClass($options, 'tbody');
+        foreach ($target as $row) {
             $table .= '<tr>';
-            foreach ( $row as $key => $col ) {
+            foreach ($row as $key => $col) {
                 // td
                 $table .= self::createTd($key, $col, $options);
             }
@@ -102,14 +102,14 @@ class TableConverter
      * @param  array  $options
      * @return string
      */
-    private static function createTd ( $key, $col, array $options )
+    private static function createTd($key, $col, array $options)
     {
-        if ( !empty( $options['refine'] ) && is_array( $options['refine'] ) ) {
+        if (!empty($options['refine']) && is_array($options['refine'])) {
             $refineFlg = false;
             foreach ($options['refine'] as $k) {
                 if ($k === $key) $refineFlg = true;
             }
-            if ( !$refineFlg ) return '';
+            if (!$refineFlg) return '';
         }
         return "<td>{$col}</td>";
     }
@@ -122,39 +122,38 @@ class TableConverter
      * @param  array $options
      * @return string
      */
-    private static function convertHeaders ( $first, &$headers, array $options )
+    private static function convertHeaders($first, &$headers, array $options)
     {
-        //
-        if ( !is_array( $headers ) || empty( $headers ) ) {
-            if ( is_array( $first ) ) {
-                $headers = array_keys( $first );
+        if (!is_array($headers) || empty($headers)) {
+            if (is_array($first)) {
+                $headers = array_keys($first);
             }
-            if ( is_object( $first ) ) {
+            if (is_object($first)) {
                 $headers = array();
                 foreach ($first as $key => $value) {
                     $headers[] = $key;
                 }
             }
             // refine
-            if ( !empty( $options['refine'] ) && is_array( $options['refine'] ) ) {
+            if (!empty($options['refine']) && is_array($options['refine'])) {
                 foreach ($headers as $k => $v) {
                     $refineFlg = false;
                     foreach ($options['refine'] as $value) {
-                        if ( $v === $value ) {
+                        if ($v === $value) {
                             $refineFlg = true;
                             break;
                         }
                     }
-                    if ( !$refineFlg ) {
-                        unset( $headers[$k] );
+                    if (!$refineFlg) {
+                        unset($headers[$k]);
                     }
                 }
             }
         }
 
-        $thead = self::getTagWithClass( $options, 'thead' );
+        $thead = self::getTagWithClass($options, 'thead');
         $thead .= '<tr>';
-        foreach ( $headers as $value ) {
+        foreach ($headers as $value) {
             $thead .= "<th>{$value}</th>";
         }
         $thead .= '</tr></thead>';
@@ -169,9 +168,9 @@ class TableConverter
      * @param  string $tag
      * @return string
      */
-    private static function getTagWithClass ( $options, $tag )
+    private static function getTagWithClass($options, $tag)
     {
-        $class = empty( $options[$tag. 'Class'] ) ? '' : ' class="'. $options[$tag. 'Class']. '"';
+        $class = empty($options[$tag . 'Class']) ? '' : ' class="' . $options[$tag . 'Class'] . '"';
         return "<{$tag}{$class}>";
     }
 }
