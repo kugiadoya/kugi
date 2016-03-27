@@ -21,7 +21,7 @@ class Format
      * @param string $date before change year
      * @return string wareki year
      */
-    public static function way( $year, $format = '%s%d年' )
+    public static function way ( $year, $format = '%s%d年' )
     {
         if ( strlen($year) !== 4 || empty($year) ) return $year;
         $g = '';
@@ -48,7 +48,7 @@ class Format
      * @param  string $mark  prefix
      * @return string        formatted price
      */
-    public static function pf( $price, $mark = '&yen;' )
+    public static function pf ( $price, $mark = '&yen;' )
     {
         $sp = '';
         if (is_float($price)) {
@@ -69,6 +69,17 @@ class Format
         } else {
             return $mark. number_format( $price, 0, '.', ',' );
         }
+    }
 
+    /**
+     * 文字列を丸める
+     * @param  string  $string
+     * @param  integer $start
+     * @param  integer $end
+     * @param  string  $endstring
+     * @return string
+     */
+    public static function strim ( $string, $start = 0, $end = 80, $endstring = '...' ) {
+        return mb_strimwidth($string, $start, $end, $endstring, 'UTF-8');
     }
 }
