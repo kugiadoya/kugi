@@ -11,7 +11,8 @@ namespace Kugi\Util;
  */
 class Format
 {
-    private function __construct(){
+    private function __construct()
+    {
 
     }
 
@@ -23,7 +24,7 @@ class Format
      */
     public static function way($year, $format = '%s%d年')
     {
-        if ( strlen($year) !== 4 || empty($year) ) return $year;
+        if (strlen($year) !== 4 || empty($year)) return $year;
 
         if ($year >= 1989) {
             $g = "平成";
@@ -57,16 +58,16 @@ class Format
             $sp = (string)$price;
         }
 
-        if ( !is_numeric($price) ) return $price;
+        if (!is_numeric($price)) return $price;
 
-        if ( empty($mark) ) {
+        if (empty($mark)) {
             $mark = '';
         }
 
         if (strpos($sp, '.') !== false) {
-            return $mark. number_format( $sp, strlen($sp) - strpos($sp, '.') - 1, '.', ',' );
+            return $mark. number_format($sp, strlen($sp) - strpos($sp, '.') - 1, '.', ',');
         } else {
-            return $mark. number_format( $price, 0, '.', ',' );
+            return $mark. number_format($price, 0, '.', ',');
         }
     }
 

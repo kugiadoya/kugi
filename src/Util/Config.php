@@ -26,7 +26,7 @@ class Config
         if ($config = parse_ini_file($path, false)) {
             foreach ($config as $key => $value) {
                 if (!defined(strtoupper($key))) {
-                    define( strtoupper( $key ), $value );
+                    define(strtoupper($key), $value);
                 }
             }
         } else {
@@ -43,8 +43,8 @@ class Config
      */
     public static function is($key, $default = null)
     {
-        if (defined( $key ) === true) {
-            return constant( $key );
+        if (defined($key) === true) {
+            return constant($key);
         }
         return $default;
     }
