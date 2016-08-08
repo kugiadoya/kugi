@@ -1,3 +1,9 @@
+<!--
+$ cd tests
+$ ../vendor/bin/phpunit
+or
+$ ../vendor/bin/phpunit Util/ConfigTest
+-->
 <phpunit backupGlobals="false"
          backupStaticAttributes="false"
          bootstrap="../vendor/autoload.php"
