@@ -4,13 +4,17 @@ namespace Kugi\Rpg;
 
 use Kugi\Rpg\iStatus;
 use Kugi\Rpg\iCharacter;
+use Kugi\Rpg\Growth;
 
 class Command {
     const LV = 'lv';
     const HP = 'hp';
+    const MAXHP = 'maxhp';
     const AP = 'ap';
     const DP = 'dp';
     const SP = 'sp';
+    const EXP = 'exp';
+    const DAMAGED = 'damaged';
 
     public function init() {
 
@@ -20,7 +24,18 @@ class Command {
 
     }
 
+    public function grow() {
+
+    }
+
+    private function preparation(iCharacter $c1, iCharacter $c2) {
+        $c1->init();
+        $c2->init();
+    }
+
     public function fight(iCharacter $c1, iCharacter $c2) {
+        $this->preparation($c1, $c2);
+
         // compare speed
         if (!is_null($c1->get(self::SP)) && !is_null($c2->get(self::SP))) {
             if ($c1->get(self::SP) > $c2->get(self::SP)) {
@@ -61,6 +76,13 @@ class Command {
                 $tern_no = 0;
             }
         }
+
+        // grow
+        $g = new Growth();
+        // var_dump($winner->getRecord());
+        $res = $g->makeResult($winner->getRecord());
+        // var_dump($res);
+        $winner = $g->grow($res, $winner);
 
         return $winner;
     }

@@ -11,6 +11,10 @@ class Status implements iStatus {
         $this->status = $status;
     }
 
+    public function getAll() {
+        return $this->status;
+    }
+
     public function get($key) {
         if (isset($this->status[$key])) {
             return $this->status[$key];
